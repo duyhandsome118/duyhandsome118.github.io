@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VKLog — Logistics Việt–Hàn</title>
+<meta name="description" content="Kiến thức xuất nhập khẩu, logistics và nghề nghiệp giữa Việt Nam và Hàn Quốc, viết bằng tiếng Việt.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0e2a47; --navy-2:#173d63; --sea:#1f7a8c; --sea-soft:#e6f2f4;
+    --sun:#e8833a; --ink:#1c2430; --muted:#5b6675; --line:#e3e7ec; --bg:#f7f8fa; --card:#ffffff;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;font-size:16.5px}
+  a{color:var(--sea);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  /* header */
+  header.top{background:var(--navy);color:#fff;position:sticky;top:0;z-index:20;box-shadow:0 1px 0 rgba(255,255,255,.06)}
+  header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;gap:16px}
+  .brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:800;letter-spacing:.2px;font-size:19px}
+  .brand:hover{text-decoration:none}
+  .brand small{font-weight:500;opacity:.75;font-size:13px;letter-spacing:0}
+  nav.main{display:flex;gap:4px;flex-wrap:wrap}
+  nav.main a{color:#d7e3ef;padding:8px 12px;border-radius:8px;font-size:15px;font-weight:500}
+  nav.main a:hover{background:rgba(255,255,255,.08);text-decoration:none;color:#fff}
+  nav.main a.on{background:rgba(255,255,255,.14);color:#fff}
+  /* hero */
+  .hero{background:linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 60%,var(--sea) 130%);color:#fff;padding:64px 0 72px;position:relative;overflow:hidden}
+  .hero h1{font-size:clamp(30px,4.6vw,48px);line-height:1.15;margin:0 0 16px;font-weight:800;max-width:720px}
+  .hero p.lead{font-size:18.5px;max-width:640px;color:#d9e6f1;margin:0 0 28px}
+  .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:12px 20px;border-radius:10px;font-weight:600;font-size:15.5px}
+  .btn.primary{background:var(--sun);color:#fff}
+  .btn.ghost{border:1.5px solid rgba(255,255,255,.45);color:#fff}
+  .btn:hover{text-decoration:none;filter:brightness(1.06)}
+  .hero svg.waves{position:absolute;right:-40px;bottom:-10px;width:520px;opacity:.18}
+  /* sections */
+  section.block{padding:56px 0}
+  .eyebrow{text-transform:uppercase;font-size:12.5px;letter-spacing:1.4px;color:var(--sea);font-weight:700;margin:0 0 6px}
+  h2.sec{font-size:28px;margin:0 0 22px;font-weight:800;color:var(--navy)}
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .pillar{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .pillar .ic{width:42px;height:42px;border-radius:10px;background:var(--sea-soft);display:grid;place-items:center;margin-bottom:12px}
+  .pillar h3{margin:0 0 6px;font-size:18px;color:var(--navy)}
+  .pillar p{margin:0;color:var(--muted);font-size:15px}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:10px;transition:box-shadow .15s,transform .15s;color:inherit}
+  .card:hover{box-shadow:0 8px 24px rgba(14,42,71,.10);transform:translateY(-2px);text-decoration:none}
+  .tag{display:inline-block;font-size:12px;font-weight:600;padding:3px 10px;border-radius:99px;background:var(--sea-soft);color:var(--sea);align-self:flex-start}
+  .tag.career{background:#fdf0e6;color:#b85d1c}
+  .tag.data{background:#ecebfb;color:#4b45a6}
+  .card h3{margin:0;font-size:18.5px;line-height:1.35;color:var(--navy)}
+  .card p{margin:0;color:var(--muted);font-size:15px;flex:1}
+  .card .meta{font-size:13px;color:var(--muted)}
+  /* stats */
+  .stats{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:center}
+  .stats .nums{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .num{border-left:3px solid var(--sea);padding-left:12px}
+  .num b{display:block;font-size:26px;color:var(--navy);font-weight:800;line-height:1.2}
+  .num span{font-size:13.5px;color:var(--muted)}
+  .src{font-size:12.5px;color:var(--muted);margin-top:14px}
+  /* article */
+  article.post{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:40px clamp(20px,5vw,56px);margin:36px auto;max-width:820px}
+  article.post h1{font-size:clamp(26px,3.6vw,36px);line-height:1.2;color:var(--navy);margin:8px 0 12px}
+  article.post .byline{color:var(--muted);font-size:14px;margin-bottom:26px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+  article.post h2{font-size:22.5px;color:var(--navy);margin:34px 0 10px}
+  article.post h3{font-size:18px;color:var(--navy-2);margin:24px 0 8px}
+  article.post p,article.post li{font-size:16.5px}
+  article.post ul,article.post ol{padding-left:22px}
+  article.post li{margin:5px 0}
+  .callout{background:var(--sea-soft);border-left:4px solid var(--sea);padding:14px 18px;border-radius:0 10px 10px 0;margin:20px 0}
+  .callout.warn{background:#fdf3ea;border-color:var(--sun)}
+  .tbl{width:100%;overflow-x:auto;margin:18px 0}
+  table{border-collapse:collapse;width:100%;font-size:14.5px;min-width:560px}
+  th,td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  th{background:#f0f4f8;color:var(--navy);font-weight:700}
+  tr:nth-child(even) td{background:#fbfcfd}
+  .ko{font-family:"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif}
+  .steps{counter-reset:s;list-style:none;padding:0!important}
+  .steps li{counter-increment:s;position:relative;padding:4px 0 14px 52px;margin:0}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:2px;width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:700;font-size:15px}
+  .steps li b{color:var(--navy)}
+  .back{display:inline-block;margin-top:26px;font-weight:600}
+  .search{width:100%;max-width:380px;padding:11px 14px;border:1px solid var(--line);border-radius:10px;font:inherit;font-size:15px;margin-bottom:14px}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+  .filters button{border:1px solid var(--line);background:#fff;border-radius:99px;padding:7px 14px;font:inherit;font-size:14px;cursor:pointer;color:var(--ink)}
+  .filters button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .about{display:grid;grid-template-columns:220px 1fr;gap:34px;align-items:start}
+  .avatar{width:200px;height:200px;border-radius:20px;background:linear-gradient(140deg,var(--navy),var(--sea));display:grid;place-items:center;color:#fff;font-size:64px;font-weight:800}
+  .soon{background:var(--card);border:1px dashed #b9c4d0;border-radius:14px;padding:22px;color:var(--muted)}
+  footer{background:var(--navy);color:#b7c7d8;padding:30px 0;font-size:14px;margin-top:40px}
+  footer a{color:#fff}
+  .view{display:none}
+  .view.on{display:block}
+  @media (max-width:860px){
+    .pillars,.cards{grid-template-columns:1fr}
+    .stats{grid-template-columns:1fr}
+    .about{grid-template-columns:1fr}
+    nav.main a{padding:6px 8px;font-size:13.5px}
+    .brand small{display:none}
+    header.top .wrap{height:auto;padding-top:10px;padding-bottom:10px;flex-wrap:wrap}
+    nav.main{width:100%;justify-content:space-between}
+    .hero svg.waves{display:none}
+    .hero{padding:44px 0 52px}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#home">
+      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#e8833a"/><path d="M6 19h20l-3 6H9z" fill="#fff"/><rect x="10" y="10" width="5" height="8" fill="#fff"/><rect x="16" y="7" width="5" height="11" fill="#fff" opacity=".85"/></svg>
+      VKLog <small>Logistics Việt–Hàn</small>
+    </a>
+    <nav class="main" aria-label="Điều hướng chính">
+      <a href="#home" data-nav="home">Trang chủ</a>
+      <a href="#bai-viet" data-nav="bai-viet">Bài viết</a>
+      <a href="#du-lieu" data-nav="du-lieu">Dữ liệu</a>
+      <a href="#gioi-thieu" data-nav="gioi-thieu">Giới thiệu</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HOME ============ -->
+<div class="view" id="v-home">
+  <div class="hero">
+    <div class="wrap">
+      <p class="eyebrow" style="color:#9fd3dd">Kiến thức · Dữ liệu · Nghề nghiệp</p>
+      <h1>Logistics Việt Nam – Hàn Quốc, giải thích bằng tiếng Việt.</h1>
+      <p class="lead">VKLog dành cho doanh nghiệp nhỏ muốn đưa hàng sang Hàn, và cho sinh viên Việt muốn làm nghề logistics ở Hàn Quốc. Viết từ Busan — thành phố có cảng container lớn nhất Hàn Quốc.</p>
+      <div class="cta">
+        <a class="btn primary" href="#bai-viet">Đọc bài viết</a>
+        <a class="btn ghost" href="#gioi-thieu">Về tác giả</a>
+      </div>
+    </div>
+    <svg class="waves" viewBox="0 0 520 260" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="2"><path d="M0 200 Q65 170 130 200 T260 200 T390 200 T520 200"/><path d="M0 225 Q65 195 130 225 T260 225 T390 225 T520 225"/></g><g fill="#fff"><rect x="150" y="120" width="230" height="50" rx="4"/><rect x="170" y="90" width="44" height="30"/><rect x="218" y="90" width="44" height="30"/><rect x="266" y="90" width="44" height="30"/><rect x="314" y="70" width="44" height="50"/><rect x="190" y="60" width="44" height="30"/><rect x="238" y="60" width="44" height="30"/></g></svg>
+  </div>
+
+  <section class="block">
+    <div class="wrap">
+      <p class="eyebrow">Ba chủ đề chính</p>
+      <h2 class="sec">VKLog viết về gì?</h2>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1f7a8c" stroke-width="2"><path d="M3 7h18M3 12h18M3 17h12"/></svg></div>
+          <h3>Kiến thức XNK Việt–Hàn</h3>
+          <p>Incoterms, chứng từ, C/O VKFTA, quy định nhập khẩu của Hàn — giải thích bằng ví dụ thật.</p>
+        </div>
+        <div class="pillar">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1f7a8c" stroke-width="2"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+          <h3>Dữ liệu thương mại</h3>
+          <p>Dashboard và phân tích số liệu thương mại Việt–Hàn theo từng nhóm hàng, từ nguồn công khai.</p>
+        </div>
+        <div class="pillar">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1f7a8c" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></div>
+          <h3>Nghề logistics ở Hàn</h3>
+          <p>Thuật ngữ, thực tập, CV, chứng chỉ — kinh nghiệm thật của một sinh viên Việt ở Busan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" style="padding-top:0">
+    <div class="wrap">
+      <p class="eyebrow">Mới nhất</p>
+      <h2 class="sec">Bài viết mới</h2>
+      <div class="cards" id="home-cards"></div>
+    </div>
+  </section>
+
+  <section class="block" style="padding-top:0">
+    <div class="wrap">
+      <p class="eyebrow">Số liệu nhanh</p>
+      <h2 class="sec">Thương mại Việt Nam – Hàn Quốc năm 2025</h2>
+      <div class="stats">
+        <div>
+          <div class="nums">
+            <div class="num"><b>89,5 tỷ USD</b><span>Tổng kim ngạch hai chiều (+9,6%)</span></div>
+            <div class="num"><b>28,9 tỷ USD</b><span>Việt Nam xuất sang Hàn (+12,7%)</span></div>
+            <div class="num"><b>60,5 tỷ USD</b><span>Việt Nam nhập từ Hàn (+8,1%)</span></div>
+            <div class="num"><b>150 tỷ USD</b><span>Mục tiêu hai nước đặt ra cho năm 2030</span></div>
+          </div>
+          <p class="src">Nguồn: Hải quan Việt Nam, qua VietNamNet và Tuổi Trẻ News (2026).</p>
+        </div>
+        <div>
+          <svg viewBox="0 0 360 200" width="100%" role="img" aria-label="Biểu đồ cột: Việt Nam xuất sang Hàn 28,9 tỷ USD, nhập từ Hàn 60,5 tỷ USD năm 2025">
+            <line x1="40" y1="170" x2="340" y2="170" stroke="#cfd6de"/>
+            <rect x="80" y="112" width="80" height="58" rx="4" fill="#1f7a8c"/>
+            <rect x="210" y="49" width="80" height="121" rx="4" fill="#0e2a47"/>
+            <text x="120" y="104" text-anchor="middle" font-size="14" font-weight="700" fill="#1c2430">28,9</text>
+            <text x="250" y="41" text-anchor="middle" font-size="14" font-weight="700" fill="#1c2430">60,5</text>
+            <text x="120" y="190" text-anchor="middle" font-size="12.5" fill="#5b6675">VN → Hàn</text>
+            <text x="250" y="190" text-anchor="middle" font-size="12.5" fill="#5b6675">Hàn → VN</text>
+            <text x="40" y="20" font-size="12" fill="#5b6675">tỷ USD</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ LIST ============ -->
+<div class="view" id="v-bai-viet">
+  <section class="block">
+    <div class="wrap">
+      <p class="eyebrow">Thư viện</p>
+      <h2 class="sec">Tất cả bài viết</h2>
+      <input class="search" id="q" type="search" placeholder="Tìm bài viết… (ví dụ: Incoterms, C/O, Busan)" aria-label="Tìm bài viết">
+      <div class="filters" id="filters">
+        <button data-f="all" class="on">Tất cả</button>
+        <button data-f="Kiến thức XNK">Kiến thức XNK</button>
+        <button data-f="Nghề nghiệp">Nghề nghiệp</button>
+        <button data-f="Dữ liệu">Dữ liệu</button>
+      </div>
+      <div class="cards" id="all-cards"></div>
+      <p id="empty" style="display:none;color:var(--muted)">Chưa có bài phù hợp.</p>
+    </div>
+  </section>
+</div>
+
+<!-- ============ DATA ============ -->
+<div class="view" id="v-du-lieu">
+  <section class="block">
+    <div class="wrap">
+      <p class="eyebrow">Dữ liệu</p>
+      <h2 class="sec">Dashboard thương mại Việt–Hàn</h2>
+      <div class="soon">
+        <p style="margin-top:0"><b style="color:var(--navy)">Đang chuẩn bị — Dashboard #1: Xuất khẩu rau quả Việt Nam sang Hàn Quốc.</b></p>
+        <p>Dashboard sẽ dùng số liệu công khai từ Hải quan Việt Nam và báo cáo hàng tháng về xuất khẩu nông sản sang Hàn của Bộ Nông nghiệp, xây bằng Power BI. Mỗi con số sẽ ghi rõ nguồn.</p>
+        <p style="margin-bottom:0">Trong lúc chờ, xem phần <a href="#home">Số liệu nhanh</a> ở trang chủ.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<div class="view" id="v-gioi-thieu">
+  <section class="block">
+    <div class="wrap">
+      <div class="about">
+        <div class="avatar" aria-hidden="true">D</div>
+        <div>
+          <p class="eyebrow">Về tác giả</p>
+          <h2 class="sec" style="margin-bottom:12px">Xin chào, mình là Nguyễn Hoàng Duy.</h2>
+          <p>Mình là sinh viên Việt Nam học ngành <b>International Trade and Logistics</b> tại <b>Pukyong National University</b>, Busan, Hàn Quốc.</p>
+          <p>Mình lập VKLog vì nhận ra hai điều: doanh nghiệp nhỏ Việt Nam muốn bán hàng sang Hàn thường thiếu thông tin bằng tiếng Việt, còn sinh viên Việt ở Hàn — giờ là nhóm du học sinh đông nhất tại đây — lại ít tài liệu về con đường làm nghề logistics. Mỗi bài viết ở đây là thứ mình đang học, được viết lại cho dễ hiểu và có trích nguồn.</p>
+          <h3 style="color:var(--navy);margin:22px 0 8px">Mình đang làm gì</h3>
+          <ul>
+            <li>Học chuyên ngành thương mại quốc tế và logistics (IELTS 6.0)</li>
+            <li>Học tiếng Hàn, mục tiêu TOPIK II</li>
+            <li>Học phân tích dữ liệu với Excel và Power BI cho các dashboard trên trang</li>
+          </ul>
+          <h3 style="color:var(--navy);margin:22px 0 8px">Kết nối</h3>
+          <p>LinkedIn: <a href="https://www.linkedin.com/in/nguyen-hoang-duy-12a771352/">linkedin.com/in/nguyen-hoang-duy-12a771352</a></p>
+          <p class="callout" style="font-size:14.5px">Nội dung trên VKLog nhằm chia sẻ kiến thức, không phải tư vấn pháp lý hay hải quan chính thức. Quy định có thể thay đổi — hãy kiểm tra lại với cơ quan hoặc đơn vị chuyên môn trước khi làm hàng thật.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ POST 1: INCOTERMS ============ -->
+<div class="view" id="v-incoterms-2020">
+  <div class="wrap">
+  <article class="post">
+    <span class="tag">Kiến thức XNK</span>
+    <h1>Incoterms 2020 qua một lô hàng Việt–Hàn</h1>
+    <div class="byline">Nguyễn Hoàng Duy · 12/2026 · khoảng 7 phút đọc</div>
+
+    <p>Khi một doanh nghiệp Việt Nam báo giá cho khách Hàn Quốc, câu hỏi đầu tiên thường là: <i>“Giá này là FOB hay CIF?”</i>. Ba chữ cái đó quyết định ai thuê tàu, ai mua bảo hiểm, ai làm thủ tục hải quan — và quan trọng nhất là <b>hàng hư hỏng giữa đường thì ai chịu</b>. Bài này giải thích Incoterms 2020 bằng một lô hàng cụ thể.</p>
+
+    <h2>Lô hàng ví dụ</h2>
+    <p>Một xưởng nội thất ở Bình Dương bán <b>một container 40 feet bàn ghế gỗ</b> cho nhà nhập khẩu ở Busan. Hành trình: xưởng Bình Dương → xe container ra <b>cảng Cát Lái</b> (TP.HCM) → tàu biển đến <b>cảng Busan</b> → xe tải về kho của người mua ở Gimhae.</p>
+
+    <h2>Incoterms là gì (và không phải là gì)</h2>
+    <p>Incoterms® là bộ quy tắc của Phòng Thương mại Quốc tế (ICC). Phiên bản đang dùng phổ biến là <b>Incoterms 2020</b>, gồm <b>11 điều kiện</b>, chia làm hai nhóm:</p>
+    <ul>
+      <li><b>Dùng cho mọi phương thức vận tải:</b> EXW, FCA, CPT, CIP, DAP, DPU, DDP.</li>
+      <li><b>Chỉ dùng cho đường biển và đường thủy nội địa:</b> FAS, FOB, CFR, CIF.</li>
+    </ul>
+    <p>Incoterms trả lời ba câu hỏi: <b>ai làm việc gì</b>, <b>ai trả chi phí nào</b>, và <b>rủi ro chuyển từ người bán sang người mua ở điểm nào</b>. Incoterms <b>không</b> quy định giá, phương thức thanh toán hay thời điểm chuyển quyền sở hữu — những điều đó nằm trong hợp đồng mua bán.</p>
+
+    <h2>Bảy điều kiện hay gặp — áp vào lô hàng Bình Dương → Busan</h2>
+    <div class="tbl"><table>
+      <thead><tr><th>Điều kiện</th><th>Người bán (Việt Nam) lo đến đâu</th><th>Rủi ro chuyển sang người mua khi</th><th>Thông quan nhập khẩu Hàn</th></tr></thead>
+      <tbody>
+        <tr><td><b>EXW</b> Bình Dương</td><td>Chỉ chuẩn bị hàng tại xưởng</td><td>Hàng sẵn sàng tại xưởng</td><td>Người mua</td></tr>
+        <tr><td><b>FCA</b> Cát Lái</td><td>Làm thủ tục xuất khẩu, giao hàng cho người chuyên chở do người mua chỉ định</td><td>Giao cho người chuyên chở</td><td>Người mua</td></tr>
+        <tr><td><b>FOB</b> Cát Lái</td><td>Thủ tục xuất khẩu, đưa hàng lên tàu</td><td>Hàng đã xếp lên tàu ở Cát Lái</td><td>Người mua</td></tr>
+        <tr><td><b>CFR</b> Busan</td><td>Như FOB + trả cước biển đến Busan</td><td>Vẫn là khi hàng lên tàu ở Cát Lái</td><td>Người mua</td></tr>
+        <tr><td><b>CIF</b> Busan</td><td>Như CFR + mua bảo hiểm cho người mua</td><td>Vẫn là khi hàng lên tàu ở Cát Lái</td><td>Người mua</td></tr>
+        <tr><td><b>DAP</b> kho Gimhae</td><td>Đưa hàng tới kho người mua (chưa dỡ khỏi xe)</td><td>Hàng tới kho Gimhae, sẵn sàng để dỡ</td><td>Người mua</td></tr>
+        <tr><td><b>DDP</b> kho Gimhae</td><td>Lo toàn bộ, kể cả thủ tục và thuế nhập khẩu ở Hàn</td><td>Hàng tới kho Gimhae</td><td><b>Người bán</b></td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="callout"><b>Điểm hay nhầm nhất:</b> với CFR và CIF, người bán trả cước đến Busan, nhưng <b>rủi ro đã chuyển cho người mua ngay khi hàng lên tàu ở Cát Lái</b>. Nếu tàu gặp sự cố giữa đường, người mua là bên phải đòi bảo hiểm — dù người bán là bên trả tiền tàu.</div>
+
+    <h2>Ba điều đáng nhớ của bản 2020</h2>
+    <h3>1. Hàng container: cân nhắc FCA thay cho FOB</h3>
+    <p>Với hàng container, người bán thường giao container ở bãi cảng vài ngày trước khi tàu chạy, chứ không tự “đặt hàng lên tàu”. Vì vậy ICC khuyến nghị dùng <b>FCA</b> (và CPT/CIP thay cho CFR/CIF) cho hàng container: rủi ro chuyển đúng lúc người bán thật sự mất quyền kiểm soát hàng. Trên thực tế FOB vẫn rất phổ biến ở Việt Nam, nhưng bạn nên biết lý do.</p>
+    <h3>2. CIF và CIP có mức bảo hiểm khác nhau</h3>
+    <p>Trong Incoterms 2020, <b>CIF</b> chỉ yêu cầu bảo hiểm ở mức tối thiểu (điều kiện C của Viện bảo hiểm London), còn <b>CIP</b> yêu cầu mức cao hơn (điều kiện A — “mọi rủi ro”). Nếu người mua Hàn muốn được bảo vệ đầy đủ khi mua theo CIF, hãy ghi thêm vào hợp đồng.</p>
+    <h3>3. DPU thay cho DAT</h3>
+    <p>Điều kiện DAT của bản 2010 được đổi thành <b>DPU</b> (giao hàng đã dỡ tại nơi đến). Giờ “nơi đến” có thể là bất kỳ địa điểm nào, không chỉ bến cảng.</p>
+
+    <h2>Doanh nghiệp nhỏ nên chọn điều kiện nào?</h2>
+    <ul>
+      <li><b>Mới xuất khẩu lần đầu:</b> FCA hoặc FOB. Bạn chỉ cần lo phần ở Việt Nam, nơi bạn hiểu rõ.</li>
+      <li><b>Khách Hàn muốn giá “tới cảng”:</b> CFR hoặc CIF Busan, nhưng hãy lấy báo giá cước của forwarder trước khi chào giá — cước biển thay đổi theo thời điểm.</li>
+      <li><b>Tránh DDP</b> khi chưa có đối tác ở Hàn: bạn sẽ phải đứng ra thông quan và nộp thuế tại Hàn, kể cả đáp ứng quy định riêng cho từng loại hàng.</li>
+    </ul>
+
+    <div class="callout warn"><b>Mẹo khi ghi hợp đồng:</b> luôn ghi đủ <i>điều kiện + địa điểm cụ thể + phiên bản</i>, ví dụ: <b>“FCA Cát Lái Terminal, TP.HCM, Việt Nam — Incoterms® 2020”</b>. Chỉ ghi “FOB” mà không có cảng là nguồn tranh chấp kinh điển.</div>
+
+    <h2>Liên quan: đừng quên C/O</h2>
+    <p>Dù chọn điều kiện nào, nếu hàng có xuất xứ Việt Nam, người bán nên xin <b>C/O mẫu VK</b> (theo Hiệp định VKFTA) hoặc <b>mẫu AK</b> (theo AKFTA) để người mua Hàn được hưởng thuế nhập khẩu ưu đãi. Nên so sánh thuế suất của hai hiệp định cho đúng mã HS của hàng để chọn mẫu có lợi hơn. Đây là điểm cộng lớn khi chào giá.</p>
+
+    <p style="margin-top:30px;color:var(--muted);font-size:14px">Tham khảo: International Chamber of Commerce — Incoterms® 2020; Andersen Vietnam — Obtaining a Certificate of Origin in Vietnam; Vietnam Briefing — Certificate of Origin in Vietnam.</p>
+    <a class="back" href="#bai-viet">← Tất cả bài viết</a>
+  </article>
+  </div>
+</div>
+
+<!-- ============ POST 2: CAT LAI → BUSAN ============ -->
+<div class="view" id="v-cat-lai-busan">
+  <div class="wrap">
+  <article class="post">
+    <span class="tag">Kiến thức XNK</span>
+    <h1>Một container đi từ Cát Lái đến Busan: từng bước</h1>
+    <div class="byline">Nguyễn Hoàng Duy · 12/2026 · khoảng 8 phút đọc</div>
+
+    <p>Bài này đi theo một container hàng nguyên (FCL) xuất khẩu từ TP.HCM sang Hàn theo điều kiện <b>FOB Cát Lái</b>: người bán Việt Nam lo đến khi hàng lên tàu, người mua Hàn lo phần còn lại. Mỗi bước có ghi <b>ai làm</b> và <b>giấy tờ gì</b>.</p>
+
+    <div class="callout"><b>Tuyến này nhanh cỡ nào?</b> Giữa Busan và TP.HCM có nhiều dịch vụ tàu đi thẳng. Theo FreightWaves, có hơn chục dịch vụ chạy thẳng tuyến này với thời gian từ 10 ngày trở xuống, một số chỉ khoảng 6 ngày. Lịch thực tế tùy hãng tàu và thời điểm.</div>
+
+    <h2>Phần 1 — Ở Việt Nam (người bán lo)</h2>
+    <ol class="steps">
+      <li><b>Ký hợp đồng và chốt Incoterms.</b> Hợp đồng ghi rõ hàng, số lượng, giá, thanh toán (T/T hay L/C) và điều kiện giao hàng, ví dụ “FOB Cát Lái — Incoterms® 2020”. <i>Giấy tờ: Sales Contract.</i></li>
+      <li><b>Đặt chỗ (booking).</b> Với FOB, thường người mua chỉ định hãng tàu hoặc forwarder; người bán liên hệ họ để lấy <b>Booking Confirmation</b> — trong đó có tên tàu, ngày chạy dự kiến (ETD) và các mốc <b>cut-off</b> (hạn hạ container, hạn nộp chứng từ).</li>
+      <li><b>Lấy container rỗng và đóng hàng.</b> Kéo container rỗng từ depot về xưởng, đóng hàng, chụp ảnh, kẹp <b>seal</b> (chì). Ghi lại số container và số seal — chúng sẽ xuất hiện trên mọi chứng từ sau này.</li>
+      <li><b>Chuẩn bị chứng từ.</b> <b>Commercial Invoice</b>, <b>Packing List</b>; xin <b>C/O mẫu VK hoặc AK</b> để người mua hưởng thuế ưu đãi — từ 7/2023, hồ sơ C/O hai mẫu này được nộp điện tử qua hệ thống eCoSys của Bộ Công Thương và dữ liệu được truyền sang hải quan Hàn. Hàng nông sản, thực phẩm có thể cần thêm giấy kiểm dịch thực vật.</li>
+      <li><b>Khai hải quan xuất khẩu.</b> Người bán (hoặc đại lý hải quan) khai tờ khai trên hệ thống <b>VNACCS</b>. Tờ khai được phân luồng xanh (thông quan ngay), vàng (kiểm tra hồ sơ) hoặc đỏ (kiểm tra thực tế hàng).</li>
+      <li><b>Hạ container tại cảng trước cut-off.</b> Container được đưa vào bãi cảng Cát Lái, thanh lý hải quan giám sát và chờ xếp lên tàu. Trễ cut-off nghĩa là rớt tàu, phải chờ chuyến sau.</li>
+      <li><b>Hàng lên tàu — rủi ro chuyển sang người mua.</b> Theo FOB, từ lúc này rủi ro thuộc về người mua. Hãng tàu phát hành <b>vận đơn (B/L)</b>; người bán gửi bộ chứng từ cho người mua hoặc ngân hàng (nếu thanh toán L/C).</li>
+    </ol>
+
+    <h2>Phần 2 — Trên biển</h2>
+    <ol class="steps" start="8" style="counter-reset:s 7">
+      <li><b>Hành trình và theo dõi.</b> Tàu chạy thẳng hoặc ghé thêm cảng trung gian. Người mua theo dõi qua trang của hãng tàu bằng số B/L hoặc số container, và nhận <b>Arrival Notice</b> trước khi tàu tới.</li>
+    </ol>
+
+    <h2>Phần 3 — Ở Hàn Quốc (người mua lo)</h2>
+    <ol class="steps" start="9" style="counter-reset:s 8">
+      <li><b>Khai báo nhập khẩu và nộp thuế.</b> Người mua hoặc 관세사 (đại lý hải quan) khai trên hệ thống <b>UNI-PASS</b> của Hải quan Hàn Quốc, nộp C/O để áp thuế ưu đãi.</li>
+      <li><b>Kiểm tra chuyên ngành (nếu có).</b> Với <b>thực phẩm</b>, cơ sở sản xuất ở nước ngoài phải được đăng ký với <b>Bộ An toàn Thực phẩm và Dược phẩm Hàn Quốc (MFDS)</b> <b>trước khi</b> khai báo nhập khẩu; hàng còn có thể bị kiểm tra theo tiêu chuẩn thực phẩm của Hàn. Nông sản tươi còn qua kiểm dịch thực vật.</li>
+      <li><b>Nhận D/O và lấy hàng.</b> Sau khi thông quan, người mua trả các phí tại cảng đến, nhận lệnh giao hàng (D/O), kéo container từ cảng Busan về kho, dỡ hàng và trả container rỗng đúng hạn để tránh phí lưu container.</li>
+    </ol>
+
+    <h2>Năm lỗi hay gặp</h2>
+    <ul>
+      <li><b>Sai mã HS</b> → sai thuế, C/O không được chấp nhận.</li>
+      <li><b>Thông tin không khớp</b> giữa Invoice, Packing List, B/L và C/O (tên hàng, số kiện, trọng lượng).</li>
+      <li><b>Trễ cut-off</b> → rớt tàu, phát sinh phí lưu bãi.</li>
+      <li><b>Thực phẩm chưa đăng ký cơ sở với MFDS</b> → hàng có thể không được nhập.</li>
+      <li><b>Thiếu nhãn tiếng Hàn</b> cho hàng tiêu dùng, thực phẩm.</li>
+    </ul>
+
+    <div class="callout warn">Bài viết mô tả quy trình phổ biến để học. Mỗi mặt hàng có yêu cầu riêng — với lô hàng thật, hãy làm việc cùng forwarder và đại lý hải quan có kinh nghiệm tuyến Việt–Hàn.</div>
+
+    <p style="margin-top:30px;color:var(--muted);font-size:14px">Tham khảo: FreightWaves — dịch vụ CTX của HMM và thời gian vận chuyển Busan–TP.HCM; Bộ Công Thương — Thông báo 500/TB-XNK về C/O điện tử mẫu AK, VK; MFDS — Registration of foreign food facilities.</p>
+    <a class="back" href="#bai-viet">← Tất cả bài viết</a>
+  </article>
+  </div>
+</div>
+
+<!-- ============ POST 3: GLOSSARY ============ -->
+<div class="view" id="v-thuat-ngu">
+  <div class="wrap">
+  <article class="post">
+    <span class="tag career">Nghề nghiệp</span>
+    <h1>Thuật ngữ logistics Việt – Anh – Hàn (bản đầu)</h1>
+    <div class="byline">Nguyễn Hoàng Duy · 01/2027 · tra cứu</div>
+
+    <p>Đi thực tập hay phỏng vấn ở công ty logistics Hàn, bạn sẽ nghe cả tiếng Anh lẫn tiếng Hàn trong cùng một câu. Đây là danh sách thuật ngữ mình gom lại khi học — bản đầu, sẽ bổ sung dần. Gõ vào ô bên dưới để lọc.</p>
+    <input class="search" id="gq" type="search" placeholder="Lọc thuật ngữ… (ví dụ: vận đơn, B/L, 통관)" aria-label="Lọc thuật ngữ">
+    <div class="tbl"><table id="gloss">
+      <thead><tr><th>Tiếng Việt</th><th>English</th><th>한국어</th></tr></thead>
+      <tbody></tbody>
+    </table></div>
+    <p class="callout" style="font-size:14.5px">Một số từ trong ngành thường được dùng nguyên tiếng Anh ngay cả khi nói tiếng Hàn (ví dụ: 포워더, CY, FCL). Nếu bạn thấy cách dùng khác trong công ty mình, hãy góp ý qua LinkedIn để mình cập nhật.</p>
+    <a class="back" href="#bai-viet">← Tất cả bài viết</a>
+  </article>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap">
+    <div><b style="color:#fff">VKLog</b> — Logistics Việt–Hàn · Viết từ Busan</div>
+    <div><a href="https://www.linkedin.com/in/nguyen-hoang-duy-12a771352/">LinkedIn</a> · Nội dung mang tính chia sẻ kiến thức, không phải tư vấn chính thức.</div>
+  </div>
+</footer>
+
+<script>
+const POSTS = [
+  {id:"incoterms-2020", title:"Incoterms 2020 qua một lô hàng Việt–Hàn", cat:"Kiến thức XNK", date:"12/2026", read:"7 phút",
+   ex:"FOB hay CIF? Ai chịu rủi ro khi hàng đang trên biển? Giải thích 7 điều kiện hay gặp bằng một container bàn ghế từ Bình Dương sang Busan."},
+  {id:"cat-lai-busan", title:"Một container đi từ Cát Lái đến Busan: từng bước", cat:"Kiến thức XNK", date:"12/2026", read:"8 phút",
+   ex:"11 bước từ booking, đóng hàng, khai VNACCS, C/O VK đến thông quan UNI-PASS và nhận hàng ở Busan — kèm 5 lỗi hay gặp."},
+  {id:"thuat-ngu", title:"Thuật ngữ logistics Việt – Anh – Hàn (bản đầu)", cat:"Nghề nghiệp", date:"01/2027", read:"tra cứu",
+   ex:"Vận đơn, thông quan, cảng xếp hàng… bằng ba thứ tiếng, có ô lọc nhanh. Dành cho sinh viên chuẩn bị thực tập ở Hàn."}
+];
+const GLOSS = [
+  ["Vận đơn","Bill of Lading (B/L)","선하증권"],
+  ["Hãng tàu","Shipping line / Carrier","선사"],
+  ["Công ty giao nhận","Freight forwarder","포워더 (국제물류주선업체)"],
+  ["Hàng nguyên container","Full Container Load (FCL)","FCL 화물"],
+  ["Hàng lẻ","Less than Container Load (LCL)","소량화물 (LCL)"],
+  ["Container","Container","컨테이너"],
+  ["Bãi container","Container Yard (CY)","컨테이너 야드 (CY)"],
+  ["Thông quan","Customs clearance","통관"],
+  ["Hải quan","Customs","세관"],
+  ["Thuế nhập khẩu","Import duty / Tariff","관세"],
+  ["Đại lý hải quan","Customs broker","관세사"],
+  ["Tờ khai xuất khẩu","Export declaration","수출신고"],
+  ["Tờ khai nhập khẩu","Import declaration","수입신고"],
+  ["Giấy chứng nhận xuất xứ","Certificate of Origin (C/O)","원산지증명서"],
+  ["Hiệp định thương mại tự do","Free Trade Agreement (FTA)","자유무역협정"],
+  ["Hóa đơn thương mại","Commercial invoice","상업송장"],
+  ["Phiếu đóng gói","Packing list","포장명세서"],
+  ["Thư tín dụng","Letter of Credit (L/C)","신용장"],
+  ["Người gửi hàng","Shipper","송하인"],
+  ["Người nhận hàng","Consignee","수하인"],
+  ["Cảng xếp hàng","Port of Loading (POL)","선적항"],
+  ["Cảng dỡ hàng","Port of Discharge (POD)","양하항"],
+  ["Ngày tàu chạy dự kiến","Estimated Time of Departure (ETD)","출항예정일"],
+  ["Ngày tàu đến dự kiến","Estimated Time of Arrival (ETA)","도착예정일"],
+  ["Cước biển","Ocean freight","해상운임"],
+  ["Lệnh giao hàng","Delivery Order (D/O)","화물인도지시서 (D/O)"],
+  ["Kho ngoại quan","Bonded warehouse","보세창고"],
+  ["Kiểm dịch","Quarantine / Inspection","검역"],
+  ["Bảo hiểm hàng hóa","Cargo insurance","적하보험"],
+  ["Vận tải đa phương thức","Multimodal transport","복합운송"],
+  ["Vận tải hàng không","Air freight","항공운송"],
+  ["Chuỗi cung ứng","Supply chain","공급망"],
+  ["Tồn kho","Inventory","재고"],
+  ["Kho hàng","Warehouse","창고"],
+  ["Xuất khẩu / Nhập khẩu","Export / Import","수출 / 수입"]
+];
+
+function tagClass(c){return c==="Nghề nghiệp"?"tag career":(c==="Dữ liệu"?"tag data":"tag")}
+function card(p){
+  return `<a class="card" href="#${p.id}"><span class="${tagClass(p.cat)}">${p.cat}</span><h3>${p.title}</h3><p>${p.ex}</p><span class="meta">${p.date} · ${p.read}</span></a>`;
+}
+document.getElementById("home-cards").innerHTML = POSTS.map(card).join("");
+
+let filter="all";
+function renderList(){
+  const q=(document.getElementById("q").value||"").toLowerCase().trim();
+  const list=POSTS.filter(p=>(filter==="all"||p.cat===filter)&&(!q||(p.title+" "+p.ex).toLowerCase().includes(q)));
+  document.getElementById("all-cards").innerHTML=list.map(card).join("");
+  document.getElementById("empty").style.display=list.length?"none":"block";
+}
+document.getElementById("q").addEventListener("input",renderList);
+document.getElementById("filters").addEventListener("click",e=>{
+  const b=e.target.closest("button"); if(!b) return;
+  filter=b.dataset.f;
+  document.querySelectorAll("#filters button").forEach(x=>x.classList.toggle("on",x===b));
+  renderList();
+});
+renderList();
+
+const tbody=document.querySelector("#gloss tbody");
+function renderGloss(){
+  const q=(document.getElementById("gq").value||"").toLowerCase().trim();
+  tbody.innerHTML=GLOSS.filter(r=>!q||r.join(" ").toLowerCase().includes(q))
+    .map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td class="ko">${r[2]}</td></tr>`).join("") ||
+    `<tr><td colspan="3" style="color:var(--muted)">Không tìm thấy thuật ngữ.</td></tr>`;
+}
+document.getElementById("gq").addEventListener("input",renderGloss);
+renderGloss();
+
+const VIEWS=["home","bai-viet","du-lieu","gioi-thieu","incoterms-2020","cat-lai-busan","thuat-ngu"];
+function route(){
+  let h=(location.hash||"").replace("#","");
+  if(!VIEWS.includes(h)) h="home";
+  document.querySelectorAll(".view").forEach(v=>v.classList.toggle("on",v.id==="v-"+h));
+  const navKey = POSTS.some(p=>p.id===h) ? "bai-viet" : h;
+  document.querySelectorAll("nav.main a").forEach(a=>a.classList.toggle("on",a.dataset.nav===navKey));
+  window.scrollTo(0,0);
+}
+window.addEventListener("hashchange",route);
+route();
+</script>
+</body>
+</html>
